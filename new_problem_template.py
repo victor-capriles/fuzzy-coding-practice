@@ -1,6 +1,9 @@
 import os
 from datetime import datetime
 
+# notion module
+from notion_logger import log_problem_to_notion
+
 # function that creates folder, file, and headers
 def create_problem_file(folder, filename, problem_title, source):
     # creates folder and checks if it already exists
@@ -44,5 +47,4 @@ if __name__ == "__main__":
     source = input("🌐 Source (e.g., Hackerrank, Book): ").strip()
 
     create_problem_file(folder, filename,  title, source)
-
-
+    log_problem_to_notion(title, source, folder, filename)
