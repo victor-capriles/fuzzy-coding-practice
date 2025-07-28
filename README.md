@@ -27,7 +27,10 @@ cd fuzzy-coding-practice
 ```
 
 ### 2. Set up your environment
-python version `Python 3.13.1`
+
+🐍 Requires Python 3.10+
+
+Tested on: `Python 3.13.1`
 
 ```bash
 # create virtual environment
@@ -41,7 +44,7 @@ pip install -r requirements.txt
 ```
 
 ### 3. Configure your `.env`
-Crate a `.env` file in the root of the project:
+Create a `.env` file in the root of the project:
 
 ```bash
 NOTION_TOKEN=your_notion_secret
@@ -54,13 +57,13 @@ NOTION_DB_ID=your_database_id
 
 Create the Notion Database:
 
-    - In Notion, create a new database (`Table view` is a good option).
-    - Add the following columns:
+  - In Notion, create a new database (`Table view` is a good option).
+  - Add the following columns:
 
     | Column Name    | Property Type                           |
     | -------------- | --------------------------------------- |
     | **Title**      | Title (default, can’t be changed)       |
-    | **Type**       | Text *(e.g., Study or UMeet)*           |
+    | **Type**       | Text         |
     | **Date**       | Date                                    |
     | **Topic**      | Multi-select                            |
     | **Status**     | Status (Not started, In progress, Done) |
@@ -71,14 +74,29 @@ Create the Notion Database:
 
 To set up the notion integration you can:
 
-- Click the `...` icon in the right upper corner > click ` Connections` > click `develop integrations` `OR`
-    - Click `New integration`
-    - Add the Associated workspace
-    - Type, select Internal
-    - Save
-> Now you have the Internal Integration Secret token that you'll have to paste in the `.env` file
+- Click the `...` icon in the right upper corner > click ` Connections` > click `develop integrations` or click on this [URL](https://www.notion.com/my-integrations)
+- Click `New integration`
+- Add the Associated workspace
+- Type, select `Internal`
+- Save
 
+You'll have a **Capabilities** section, leave it on default which is:
+- Read content ✅
+- Update content ✅
+- Insert content ✅
 
+Now you have the Internal Integration Secret token! that you'll have to paste in the `.env` file
+
+```bash
+NOTION_TOKEN=your_notion_secret_token
+NOTION_DB_ID=your_database_id
+```
+The `NOTION_DB_ID` is the long string in your database's URL (e.g., https://talented-dart-7e7.notion.site/23a51ac69b82806b836ec6f46c387cb2?v=23a51ac69b82813e98f1000c8e85746c)
+
+in this case it would be:
+- NOTION_DB_ID=23a51ac69b82806b836ec6f46c387cb2
+
+---
 
 ## 🧪 Usage
 Run the tool to generate a new problem template with:
@@ -88,14 +106,16 @@ python new_problem_template.py
 ```
 
 You'll be prompted to enter:
-    - folder name
-    - file name
-    - problem title and source
-    - status, topic(s), time spent, GitHub URL
+- folder name
+- file name
+- problem title and source
+- status, topic(s), time spent, GitHub URL
 
 This will:
-    - create a file with a basic code template
-    - log the metadata to you connected Notion database
+- create a file with a basic code template
+- log the metadata to you connected Notion database
+
+---
 
 ## 📸 Example output
 
@@ -110,4 +130,9 @@ This will:
 🏷️ Topic(s): Arrays
 ✅ Logged to Notion!
 ```
+
+---
+
+## 🙌 Contributing
+If you want to improve this tool, feel free to open an issue or submit a PR!
 
