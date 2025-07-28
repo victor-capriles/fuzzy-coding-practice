@@ -49,25 +49,33 @@ NOTION_DB_ID=your_database_id
 ```
 
 >💡 Make sure to share your Notion database with your integration.
-> To create one:
-> 1. Set up the Notion database
-> 2. Create the table
 
-| Column Name    | Property Type                           |
-| -------------- | --------------------------------------- |
-| **Title**      | Title (default, can’t be changed)       |
-| **Type**       | Text *(e.g., Study or UMeet)*           |
-| **Date**       | Date                                    |
-| **Topic**      | Multi-select                            |
-| **Status**     | Status (Not started, In progress, Done) |
-| **Time Spent** | Text                                    |
-| **Github URL** | URL                                     |
+### 4. Set up Notion Database
 
-> 3. Click the `...` icon in the right upper corner > click ` Connections` > click `develop integrations`
-> 4. Click `New integration`
->   - Add the Associated workspace
->   - Type, select Internal
->   - Save
+Create the Notion Database:
+
+    - In Notion, create a new database (`Table view` is a good option).
+    - Add the following columns:
+
+    | Column Name    | Property Type                           |
+    | -------------- | --------------------------------------- |
+    | **Title**      | Title (default, can’t be changed)       |
+    | **Type**       | Text *(e.g., Study or UMeet)*           |
+    | **Date**       | Date                                    |
+    | **Topic**      | Multi-select                            |
+    | **Status**     | Status (Not started, In progress, Done) |
+    | **Time Spent** | Text                                    |
+    | **Github URL** | URL                                     |
+
+### 5. Set up Notion Integration
+
+To set up the notion integration you can:
+
+- Click the `...` icon in the right upper corner > click ` Connections` > click `develop integrations` `OR`
+    - Click `New integration`
+    - Add the Associated workspace
+    - Type, select Internal
+    - Save
 > Now you have the Internal Integration Secret token that you'll have to paste in the `.env` file
 
 
