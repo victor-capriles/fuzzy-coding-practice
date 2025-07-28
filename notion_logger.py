@@ -15,7 +15,7 @@ def log_problem_to_notion(folder, filename, title, source):
 
         # prompt user for all necessary fields in Notion db
         # set umeet or study as page title in Notion
-        notion_title = input("📖 Entry type (e.g., UMeet, Study): ").strip()
+        notion_title = input("📖 Entry type (e.g., Coding, Study): ").strip()
         exercise_name = input("📚 Exercise name (e.g., Two Sum): ").strip()
         github_url = input("🔗 GitHub URL (optional): ").strip()
         status = input("📌 Status (Not started / In progress / Done / Not Done): ").strip()
