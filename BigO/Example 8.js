@@ -25,6 +25,6 @@ making comparisons cost O(s). Making the runtime O(s * a log a)
 Now we combine the runtimes
 - O(a * s log s)
 - O(s * a log a)
-= O(a * s (log a * log s))
+= O(a * s (log a + log s))
 
 */
