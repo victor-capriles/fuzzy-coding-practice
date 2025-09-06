@@ -35,7 +35,7 @@ def twoSum(self, nums: List[int], target: int) -> List[int]:
                 return [i, j]
 """  
 # Solution with O(n) using a hash map
-def twoSum(self, nums: List[int], target: int) -> List[int]:
+def twoSum(nums: List[int], target: int):
     # create an empty dic
     store_index = {}
 
