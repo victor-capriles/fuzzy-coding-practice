@@ -5,6 +5,8 @@
 # Status: Solved, In progress, Review needed 
 
 """
+Valid Parentheses
+
 Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 
 An input string is valid if:
@@ -40,6 +42,8 @@ Constraints:
 s consists of parentheses only '()[]{}'.
 """
 
+s = "(()"
+
 def isValid(s: str) -> bool:
     # empty list (stack)
     stack = []
@@ -70,4 +74,6 @@ def isValid(s: str) -> bool:
         
     # return true if stack empty
     return True if not stack else False
+
+print(isValid(s))
         
