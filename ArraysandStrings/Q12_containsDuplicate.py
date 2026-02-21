@@ -30,34 +30,50 @@ Constraints:
 -109 <= nums[i] <= 109
 """
 
-from  typing import List
+from typing import List
 
-### O(n**2) brute force approach
-def containsDuplicate (nums: List[int]) -> bool:
+### Time complexity = O(n**2) brute force approach
+### Space complexity = O(1) we didnt store anything in memory nor created a new array
+def containsDuplicate(nums: List[int]) -> bool:
     for i in range(len(nums)):
         for j in range(i + 1, len(nums)):
             if nums[i] == nums[j]:
                 return True
-    
     return False
 
-### O(n log n) using sorting algorithm
+### Tests
+assert containsDuplicate([1,2,3,1]) is True
+assert containsDuplicate([1,2,3,4]) is False
+print("ok, brute force approach")
+
+### Time complexity = O(n log n) using sorting algorithm
+### Space complexity = O(1) we are mutating the input directly, we didnt create a new array
 def containsDuplicateSort(nums: List[int]) -> bool:
     nums.sort()
 
-    for i in range(1, len(nums)):
-        if nums[i] == nums[i - 1]:
+    for i in range (1, len(nums)):
+        if nums[i] == nums[i -1]:
             return True
-    
     return False
 
-### O(n) using hash set, also O(n) for space as we create a hash with the seen values
-def containsDuplicateSet(nums: List[int]) -> bool:
-    seen = set()
+### Tests
+assert containsDuplicateSort([1,5,3,2,1]) is True
+assert containsDuplicateSort([1,2,5,3,4]) is False
+print("ok, sorted approach")
 
+### Time complexity = O(n) Look ups are O(1) but we do that n times
+### Space complexity = O(n) because we stored the seen values
+### in this solution we don't loop over the index, its the actual value of the element
+
+def containsDuplicateHash(nums: List[int]) -> bool:
+    seen = set()
     for num in nums:
         if num in seen:
             return True
         seen.add(num)
-
     return False
+
+### Tests
+assert containsDuplicateHash([1,2,5,3,6,2]) is True
+assert containsDuplicateHash([1,3,5,2,6,7]) is False
+print("ok, hash set approach")
