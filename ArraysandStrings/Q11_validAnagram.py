@@ -32,7 +32,7 @@ def sortedIsAnagram(s: str, t: str) -> bool:
     return sorted(s) == sorted(t)
 
 ### time complexity = O(s + t)
-### space complexity = O(1)
+### space complexity = O(n)
 def hashIsAnagram(s: str, t: str) -> bool:
     if len(s) != len(t):
         return False
@@ -43,3 +43,4 @@ def hashIsAnagram(s: str, t: str) -> bool:
         countS[s[i]] = 1 + countS.get(s[i], 0)
         countT[t[i]] = 1 + countT.get(t[i], 0)
     return countS == countT
+
