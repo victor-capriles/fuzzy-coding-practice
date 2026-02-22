@@ -25,30 +25,27 @@ Follow-up: Can you come up with an algorithm that is less than O(n2) time comple
 """
 from typing import List
 
-# SOLUTION with O(n**2)
-""""
-def twoSum(self, nums: List[int], target: int) -> List[int]: 
-    # write code here
-    for i in range (len(nums)):
+nums = [2,7,11,15]
+target = 9
+
+### Time complexity = O(n^2) using nested loop
+### Space complexity = O(1)
+def twoSum(nums: List[int]) -> List[int]:
+    for i in range(len(nums)):
         for j in range(i + 1, len(nums)):
             if nums[i] + nums[j] == target:
-                return [i, j]
-"""  
-# Solution with O(n) using a hash map
-def twoSum(nums: List[int], target: int):
-    # create an empty dic
-    store_index = {}
+                return [i , j]
+    return []
 
-    # loop throught the list of nums
-    for i in range(len(nums)):
-        # get the number at index[i] and store in num
-        num = nums[i]
-        # compute complement by substracting num from target
+### Time complexity = O(n)
+### Space complexity = O(n)
+def twoSumHash(nums: List[int]) -> List[int]:
+    seen_number = {}
+    
+    for i, num in enumerate(nums):
         complement = target - num
-        # check if complement exist already in dictionary
-        if complement in store_index:
-            # return indices o the two numbers
-            return [store_index[complement], i]
+        if complement in seen_number:
+            return [seen_number[complement], i]
+        seen_number[num] = i
+    return []
         
-        # if it isn't add the current number to the dictionary
-        store_index[num] = i
