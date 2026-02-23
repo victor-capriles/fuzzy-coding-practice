@@ -34,13 +34,22 @@ def sortedIsAnagram(s: str, t: str) -> bool:
 ### time complexity = O(s + t)
 ### space complexity = O(n)
 def hashIsAnagram(s: str, t: str) -> bool:
+    # check if the two strings are of the same length
+    # if they dont, they arent anagrams
     if len(s) != len(t):
         return False
     
+    # create two empty dics, they will store the character
+    # frequency count for each string
     countS, countT = {}, {}
 
+    # loop through each index of the strings
     for i in range(len(s)):
+        # for the character at position i in s, increment its count.
+        # if the character hasnt been seen, current default to 0
         countS[s[i]] = 1 + countS.get(s[i], 0)
+        # do the same but for t
         countT[t[i]] = 1 + countT.get(t[i], 0)
+        # return by comparing the content of both dicts
     return countS == countT
 

@@ -66,11 +66,18 @@ print("ok, sorted approach")
 ### in this solution we don't loop over the index, its the actual value of the element
 
 def containsDuplicateHash(nums: List[int]) -> bool:
+    # create an empty set to keep track of number we 
+    # have already seen
     seen = set()
+    # iterate through each number in the array
     for num in nums:
+        # if the current number is already in set
         if num in seen:
+            # return true
             return True
+        # otherwise add current number to set
         seen.add(num)
+    # return
     return False
 
 ### Tests

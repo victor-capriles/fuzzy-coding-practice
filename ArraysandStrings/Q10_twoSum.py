@@ -40,12 +40,21 @@ def twoSum(nums: List[int]) -> List[int]:
 ### Time complexity = O(n)
 ### Space complexity = O(n)
 def twoSumHash(nums: List[int]) -> List[int]:
+    # create an empty dictionary that will store numbers we
+    # have already seen
     seen_number = {}
     
+    # loop through the list, so i is the current index 
+    # and num is the current value
     for i, num in enumerate(nums):
+        # compute the complement
         complement = target - num
+        # check if complement exist in dictionary
         if complement in seen_number:
+            # if we have we return index of the complement and current index
             return [seen_number[complement], i]
+        # otherwise, store current number in the diciotnary along its index
         seen_number[num] = i
+        # if no solution, return empty list
     return []
         
