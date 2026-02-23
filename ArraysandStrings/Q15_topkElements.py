@@ -34,41 +34,31 @@ nums = [1, 2, 1, 1, 2, 3]
 k = 2
 
 def topKFrequent(nums: List[int], k: int) -> List[int]:
-    # empty dictionary to count how often each number appears in nums
-    element_freq = {}
-
-    # count the numbers in nums
+    # creates an empty dic to store each number frequency
+    count = {}
+    # loop through every number in nums and count how many times it appears
+    # storing that in the dictionary
     for number in nums:
-        # start its count at 1 if its not in the dictionary yet
-        # or increment its existing count by 1
-        element_freq[number] = element_freq.get(number, 0) + 1
+        count[number] = 1 + count.get(number, 0)
 
-        # create an empty list of lists, one for each possible frequency
-        freq_buckets = [[] for _ in range(len(nums) + 1)]
-
-        # now take each number and frequency, from dictionary
-        for number, frequency in element_freq.items():
-            # and append into the right bucket
-            freq_buckets[frequency].append(number)
-
-        # prepare an empty list to store our final top k results
-        result = []
-
-        # reverse loop, because we are checking the highest frequency first
-        for frequency in range(len(nums), 0, -1):
-            # if there are any numbers in the bucket
-            if freq_buckets[frequency]:
-
-                # add each number from the bucket into our result list
-                for number in freq_buckets[frequency]:
-                    result.append(number)
-
-                    # if we have added k elements, return list
-                    if len(result) == k:
-                        return result
+    # create a list made of empty lists, with length + 1 where  index c
+    # will hold all numbers that appear c times
+    number_frequency = [[] for i in range(len(nums) + 1)]
+    # loop through the frequency dict and place each number into 
+    # the bucket that matches its count
+    for number, cnt in count.items():
+        number_frequency[cnt].append(number)
     
-    # fallback
-    return result
+    # create an empty result list. Then iterate i from the highest 
+    # possible frequency down to 0
+    # for every number in the bucket at frequency i add it to result
+    # as soon we have collected k, return it
+    res = []
+    for i in range(len(number_frequency) -1, 0, -1):
+        for number in number_frequency[i]:
+            res.append(number)
+            if len(res) == k:
+                return res
 
-result = topKFrequent(nums, k)
-print(result)
+    
+    
