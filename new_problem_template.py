@@ -4,6 +4,35 @@ from datetime import datetime
 # notion module
 from notion_logger import log_problem_to_notion
 
+
+LANGUAGE_TEMPLATES = {
+    ".js": (
+        "function function_name() {\n"
+        "    // write code here\n"
+        "    return;\n"
+        "}\n"
+    ),
+    ".py": (
+        "def function_name(): \n"
+        "    # write code here\n"
+        "    return\n"
+    ),
+    ".ts": (
+        "function function_name(): void {\n"
+        "    // write code here\n"
+        "    return;\n"
+        "}\n"
+    ),
+    ".java": (
+        "public class Solution {\n"
+        "    public static void main(String[] args) {\n"
+        "        // write code here\n"
+        "    }\n"
+        "}\n"
+    ),
+}
+
+
 # function that creates folder, file, and headers
 def create_problem_file(folder, filename, problem_title, source):
     # creates folder and checks if it already exists
@@ -25,17 +54,9 @@ def create_problem_file(folder, filename, problem_title, source):
         f.write(f"# Approach: Brief idea of how you tackled the problem \n# Status: Solved, In progress, Review needed \n\n" if filename.endswith(".py") else "// Approach: Brief idea of how you tackled the problem \n// Status: Solved, In progress, Review needed \n\n")
         
         # language-specific function block
-        if filename.endswith(".js"):
-            f.write("function function_name() {\n")
-            f.write("    // write code here\n")
-            f.write("    return;\n")
-            f.write("}\n")
-        elif filename.endswith(".py"):
-            f.write("def function_name(): \n")
-            f.write("    # write code here\n")
-            f.write("    return\n")
-        else:
-            f.write("// write code here\n")
+        ext = os.path.splitext(filename)[1]
+        template = LANGUAGE_TEMPLATES.get(ext, "// write code here\n")
+        f.write(template)
 
     print(f"✅ created: {path}")
 
