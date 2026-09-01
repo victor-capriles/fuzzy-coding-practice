@@ -117,6 +117,18 @@ This will:
 
 ---
 
+## 📝 Supported Languages
+The generator recognizes the file extension and adds a starter template for:
+
+| Language   | Extension | Example filename |
+| ---------- | --------- | ---------------- |
+| JavaScript | `.js`     | `two_sum.js`     |
+| TypeScript | `.ts`     | `two_sum.ts`     |
+| Python     | `.py`     | `two_sum.py`     |
+| Java       | `.java`   | `TwoSum.java`    |
+
+---
+
 ## 📸 Example output
 
 ```bash
